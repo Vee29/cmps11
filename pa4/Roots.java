@@ -7,7 +7,6 @@
 //-----------------------------------------------------------
 
 import java.util.Scanner;
-import java.text.DecimalFormat;
 
 class Roots {
 	public static void main(String[] args) {
@@ -35,19 +34,19 @@ class Roots {
 		for(double i=a; i<b; i+=resolution) {
 			if (poly(C, i) > 0 && (poly(C,i+resolution)) < 0) {
 				root = findRoot(C, i, i+resolution, tolerance);
-				System.out.println("Root found at: " + root);
+				System.out.println("Root found at: " + (double)Math.round(root*100000d)/100000d);
 			}
 			else if (poly(C, i) < 0 && (poly(C,i+resolution)) > 0) {
 				root = findRoot(C, i, i+resolution, tolerance);
-				System.out.println("Root found at: " + root);
+				System.out.println("Root found at: " + (double)Math.round(root*100000d)/100000d);
 			}
 			else if (poly(D, i) > 0 && (poly(D,i+resolution)) < 0) {
 				root = findRoot(D, i, i+resolution, tolerance);
-				System.out.println("Root found at: " + root);
+				System.out.println("Root found at: " + (double)Math.round(root*100000d)/100000d);
 			}
 			else if (poly(D, i) < 0 && (poly(D,i+resolution)) > 0) {
 				root = findRoot(D, i, i+resolution, tolerance);
-				System.out.println("Root found at: " + root);
+				System.out.println("Root found at: " + (double)Math.round(root*100000d)/100000d);
 			}
 		}
 		if (((poly(D,a) >= 0) && (poly(D,b) >= 0)) || (poly(D,a) < 0) && (poly(D,b) < 0)) {
