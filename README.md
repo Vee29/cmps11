@@ -1,1 +1,2 @@
-# cmps11
+# CMPS 11
+UCSC Tantalo
