@@ -13,46 +13,48 @@ class Roots {
 		Scanner sc = new Scanner(System.in);
 		double resolution = 0.01, tolerance = 0.0000001, threshold = 0.001;
 		double root;
-		
-		// Enter Degree
+		boolean foundRoot = false;
+
 		System.out.print("Enter the degree: ");
 		int degree = sc.nextInt();
 		double[] C = new double[degree+1];
 		double[] D = diff(C);
 
-		// Enter Coefficients
 		System.out.print("Enter the " + (degree+1) + (" coefficients: "));
 		for(int i = 0; i<C.length; i++) {
 			D[i] = sc.nextDouble();
 		}
 
-		// Enter LR Endpoints
 		System.out.print("Enter the left and right endpoints: ");
 		double a = sc.nextDouble();
 		double b = sc.nextDouble();
 
 		for(double i=a; i<b; i+=resolution) {
 			if (poly(C, i) > 0 && (poly(C,i+resolution)) < 0) {
+				foundRoot = true;
 				root = findRoot(C, i, i+resolution, tolerance);
 				System.out.println("Root found at: " + (double)Math.round(root*100000d)/100000d);
 			}
 			else if (poly(C, i) < 0 && (poly(C,i+resolution)) > 0) {
+				foundRoot = true;
 				root = findRoot(C, i, i+resolution, tolerance);
 				System.out.println("Root found at: " + (double)Math.round(root*100000d)/100000d);
 			}
 			else if (poly(D, i) > 0 && (poly(D,i+resolution)) < 0) {
+				foundRoot = true;
 				root = findRoot(D, i, i+resolution, tolerance);
 				System.out.println("Root found at: " + (double)Math.round(root*100000d)/100000d);
 			}
 			else if (poly(D, i) < 0 && (poly(D,i+resolution)) > 0) {
+				foundRoot = true;
 				root = findRoot(D, i, i+resolution, tolerance);
 				System.out.println("Root found at: " + (double)Math.round(root*100000d)/100000d);
 			}
 		}
-		if (((poly(D,a) >= 0) && (poly(D,b) >= 0)) || (poly(D,a) < 0) && (poly(D,b) < 0)) {
-			System.out.println("No roots were found in the specified range.");
-			System.exit(0);
-		}
+		if (foundRoot == false) {
+				System.out.println("No roots were found in the specified range.");
+				System.exit(0);
+			}
 	}
 
 	static double poly(double[] C, double x) {
