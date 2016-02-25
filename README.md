@@ -1,2 +1,2 @@
-# CMPS 11
-UCSC Tantalo
+# CMPS 11 Intermediate Programming
+UCSC Tantalo Winter Quarter
