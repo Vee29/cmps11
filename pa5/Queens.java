@@ -6,7 +6,6 @@
 // -----------------------------------------
 
 import java.util.Scanner;
-import java.lang.Integer;
 
 class Queens {
 	public static void main (String[] args) {
@@ -17,7 +16,7 @@ class Queens {
 		for(int i = 0; i < args.length; i++)
 			sc = new Scanner(args[i]);
 
-		if (args.length== 0)
+		if (args.length == 0) // No command line entered
 			printUsage();
 		else if (!v.equals(args[0]) && args.length == 2)
 			printUsage();
@@ -25,35 +24,29 @@ class Queens {
 			printUsage();
 		else if (Integer(args[0]) && args.length == 1)
 			printUsage();
-
 		else if (args.length == 1){		
 			int number = Integer.parseInt(args[0]);
 			n = number;
-			//first step of permutation
+			// First Permutation
 			int [] A = new int [number+1];
 			A[0] = 0;
-			for( int i=1; i <= number; i++){
+			for( int i=1; i <= number; i++)
 				A[i] = i;
-			}
-		
 			b = factorial(number);
 			for(int i=1 ;i<=b;i++){
 				nextPermutation(A);
-				if (isSolution(A)){
+				if (isSolution(A))
 					k++;
-				}
 			}
 			System.out.println(n+"-Queens has "+k+" solutions");
 		}else if (args.length == 2 && v.equals(args[0])){
 			int number = Integer.parseInt(args[1]);
 			n = number;
-			//first step of permutation
+			// First Permutation
 			int [] A = new int [number+1];
 			A[0] = 0;
-			for( int i=1; i <= number; i++){
+			for( int i=1; i <= number; i++)
 				A[i] = i;
-			}
-		
 			b = factorial(number);
 			for(int i=1 ;i<=b;i++){
 				nextPermutation(A);
@@ -64,7 +57,7 @@ class Queens {
 			}
 			System.out.println(n+"-Queens has "+k+" solutions");
 		}
-	}
+	} // End of Main
 
 	static void nextPermutation(int[] A) {
 		int pivot = 0, successor = 0;
@@ -76,7 +69,7 @@ class Queens {
 				break;
 			}
 		}
-		// If end is reached without pivot
+		// If end is reached without pivot, reverse
 		if (pivot == 0) {
 			reverse(A, 1, A.length-1);
 			return;
@@ -93,6 +86,7 @@ class Queens {
 		return;
 	}
 
+	// Check if the solution
 	static boolean isSolution(int[] A){
 		for (int i = 2; i < A.length; i++){
 			for (int j = 1; j < i; j++){
@@ -130,12 +124,14 @@ class Queens {
 		return factorial;
 	}
 
+	// Statement if input is not correct
 	static void printUsage() {
 		System.out.println("Usage: java Queens [-v] number");
 		System.out.println("Option: -v verbose output, print all solutions");
 		System.exit(0);
 	}
 
+	// Print the list of solutions
 	static void printSolution(int [] A) {
 		System.out.print("(");
 		for (int i=1; i<A.length-1; i++)
@@ -144,6 +140,7 @@ class Queens {
 		System.out.print(")\n");
 	}
 
+	// Input is not a number
 	static boolean Integer(String s) {
 		try {
 			Integer.parseInt(s);
