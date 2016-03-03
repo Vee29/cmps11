@@ -6,11 +6,12 @@
 // -----------------------------------------
 
 import java.util.Scanner;
+import java.lang.Integer;
 
 class Queens {
 	public static void main (String[] args) {
 		Scanner sc = new Scanner(System.in);
-		int n, b, k;
+		int n, b, k=0;
 		String v = "-v";
 
 		for(int i = 0; i < args.length; i++)
@@ -25,48 +26,51 @@ class Queens {
 		else if (Integer(args[0]) && args.length == 1)
 			printUsage();
 
-		else if (args.length == 1) {
+		else if (args.length == 1){		
 			int number = Integer.parseInt(args[0]);
 			n = number;
-			// First Permutation
-			int [] A = new int[number+1];
+			//first step of permutation
+			int [] A = new int [number+1];
 			A[0] = 0;
-			for(int i = 1; i <= number; i++) {
+			for( int i=1; i <= number; i++){
 				A[i] = i;
 			}
+		
 			b = factorial(number);
-			for(int i = 1; i <=b; i++) {
+			for(int i=1 ;i<=b;i++){
 				nextPermutation(A);
-				if(isSolution(A))
+				if (isSolution(A)){
 					k++;
+				}
 			}
-		System.out.println(number + "-Queens has " +k+ " solutions");
-		}
-		else if (args.length == 2 && v.equals(args[0])) {
-			int number = Integer.parseInt(args[0]);
+			System.out.println(n+"-Queens has "+k+" solutions");
+		}else if (args.length == 2 && v.equals(args[0])){
+			int number = Integer.parseInt(args[1]);
 			n = number;
-			// First Permutation
-			int [] A = new int[number+1];
+			//first step of permutation
+			int [] A = new int [number+1];
 			A[0] = 0;
-			for(int i = 1; i <= number; i++) {
+			for( int i=1; i <= number; i++){
 				A[i] = i;
 			}
+		
 			b = factorial(number);
-			for(int i = 1; i <=b; i++) {
+			for(int i=1 ;i<=b;i++){
 				nextPermutation(A);
-				if(isSolution(A))
+				if (isSolution(A)){
 					printSolution(A);
 					k++;
+				}
 			}
-
+			System.out.println(n+"-Queens has "+k+" solutions");
 		}
 	}
 
 	static void nextPermutation(int[] A) {
-		int pivot, successor;
+		int pivot = 0, successor = 0;
 		
 		// Scan array right to left
-		for(int i = A.length; i > 0; i--) {
+		for(int i = A.length-2; i > 0; i--) {
 			if (A[i] < A[i+1]) {
 				pivot = i;
 				break;
@@ -78,24 +82,25 @@ class Queens {
 			return;
 		}
 		// Scan the array from right to left again
-		for(int i = A.length; i > 0; i--) {
-			if (A[i] > pivot) {
+		for(int i = A.length-1; i > pivot; i--) {
+			if (A[i] > A[pivot]) {
 				successor = i;
 				break;
 			}
 		}
 		swap(A,pivot,successor); // Swap pivot and successor
-		reverse(A,pivot,A.length-1); // Reverse array to the right of pivot
+		reverse(A,pivot+1,A.length-1); // Reverse array to the right of pivot
 		return;
 	}
 
-	static boolean isSolution(int[] A) {
-		for (int i = 0; i < A.length; i++) {
-			for (int j = 0; j < A.length; j++) {
-				if ((A[i]-A[j]) == (i-j))
+	static boolean isSolution(int[] A){
+		for (int i = 2; i < A.length; i++){
+			for (int j = 1; j < i; j++){
+				if ((A[i] - A[j]) == (i-j)){
 					return false;
-				if ((A[j]-A[i]) == (i-j))
+				}else if ((A[j] - A[i]) == (i-j)){
 					return false;
+				}
 			}
 		}
 		return true;
@@ -118,8 +123,9 @@ class Queens {
 	}
 
 	// Calculate the factorial
-	static int factorial(int n) {
-		for(int i = 1; i <= n; i++)
+	static int factorial(int A) {
+		int factorial = 1;
+		for(int i = 1; i <= A; i++)
 			factorial *= i;
 		return factorial;
 	}
@@ -138,7 +144,7 @@ class Queens {
 		System.out.print(")\n");
 	}
 
-	static void Integer(int [] A) {
+	static boolean Integer(String s) {
 		try {
 			Integer.parseInt(s);
 		} catch (NumberFormatException e) {
