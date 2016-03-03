@@ -22,7 +22,7 @@ class Queens {
 			printUsage();
 		else if (args.length >= 3) // Too many input arguments
 			printUsage();
-		else if (Integer(args[0]) && args.length == 1)
+		else if (Integer(args[0]) && args.length == 1) // Input is not a number
 			printUsage();
 		else if (args.length == 1){	// If no -v, print solution
 			int number = Integer.parseInt(args[0]);
