@@ -10,23 +10,60 @@ import java.util.Scanner;
 class Queens {
 	public static void main (String[] args) {
 		Scanner sc = new Scanner(System.in);
-		int n = sc.nextInt();
+		int n, b, k;
+		String v = "-v";
 
+		for(int i = 0; i < args.length; i++)
+			sc = new Scanner(args[i]);
 
-		int[] A = new int[n];
-		for (int i = 0; i < A.length; i++) {
-			
-		}
-		if(isSolution(A[i]) == false) {
-			nextPermutation(A[i]);
-		} else
-			for(int i = 0; i <= A.length; i++) {
-				System.out.println(A[i]);
+		if (args.length== 0)
+			printUsage();
+		else if (!v.equals(args[0]) && args.length == 2)
+			printUsage();
+		else if (args.length >= 3)
+			printUsage();
+		else if (Integer(args[0]) && args.length == 1)
+			printUsage();
+
+		else if (args.length == 1) {
+			int number = Integer.parseInt(args[0]);
+			n = number;
+			// First Permutation
+			int [] A = new int[number+1];
+			A[0] = 0;
+			for(int i = 1; i <= number; i++) {
+				A[i] = i;
 			}
+			b = factorial(number);
+			for(int i = 1; i <=b; i++) {
+				nextPermutation(A);
+				if(isSolution(A))
+					k++;
+			}
+		System.out.println(number + "-Queens has " +k+ " solutions");
+		}
+		else if (args.length == 2 && v.equals(args[0])) {
+			int number = Integer.parseInt(args[0]);
+			n = number;
+			// First Permutation
+			int [] A = new int[number+1];
+			A[0] = 0;
+			for(int i = 1; i <= number; i++) {
+				A[i] = i;
+			}
+			b = factorial(number);
+			for(int i = 1; i <=b; i++) {
+				nextPermutation(A);
+				if(isSolution(A))
+					printSolution(A);
+					k++;
+			}
+
+		}
 	}
 
 	static void nextPermutation(int[] A) {
-		int pivot, int successor;
+		int pivot, successor;
 		
 		// Scan array right to left
 		for(int i = A.length; i > 0; i--) {
@@ -61,6 +98,7 @@ class Queens {
 					return false;
 			}
 		}
+		return true;
 	}
 
 	// Reverse the direction of the permutation
@@ -74,9 +112,9 @@ class Queens {
 
 	// Swap the values
 	static void swap(int[] A, int i, int j) {
-		int temp = a[i];
-		a[i] = a[j];
-		a[j] = temp;
+		int temp = A[i];
+		A[i] = A[j];
+		A[j] = temp;
 	}
 
 	// Calculate the factorial
@@ -86,9 +124,26 @@ class Queens {
 		return factorial;
 	}
 
-	static void printUsage {
+	static void printUsage() {
 		System.out.println("Usage: java Queens [-v] number");
 		System.out.println("Option: -v verbose output, print all solutions");
 		System.exit(0);
+	}
+
+	static void printSolution(int [] A) {
+		System.out.print("(");
+		for (int i=1; i<A.length-1; i++)
+			System.out.print(A[i]+", ");
+		System.out.print(A[A.length-1]);
+		System.out.print(")\n");
+	}
+
+	static void Integer(int [] A) {
+		try {
+			Integer.parseInt(s);
+		} catch (NumberFormatException e) {
+			return true;
+		}
+		return false;
 	}
 }
