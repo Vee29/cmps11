@@ -82,9 +82,9 @@ class Queens {
 			return;
 		}
 		// Scan the array from right to left again
-		for(int i = A.length-1; i > pivot; i--) {
-			if (A[i] > A[pivot]) {
-				successor = i;
+		for(int j = A.length-1; j > pivot; j--) {
+			if (A[j] > A[pivot]) {
+				successor = j;
 				break;
 			}
 		}
