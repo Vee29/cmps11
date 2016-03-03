@@ -18,13 +18,13 @@ class Queens {
 
 		if (args.length == 0) // No command line entered
 			printUsage();
-		else if (!v.equals(args[0]) && args.length == 2)
+		else if (!v.equals(args[0]) && args.length == 2) // 2 arguements but no -v
 			printUsage();
-		else if (args.length >= 3)
+		else if (args.length >= 3) // Too many input arguments
 			printUsage();
 		else if (Integer(args[0]) && args.length == 1)
 			printUsage();
-		else if (args.length == 1){		
+		else if (args.length == 1){	// If no -v, print solution
 			int number = Integer.parseInt(args[0]);
 			n = number;
 			// First Permutation
@@ -39,7 +39,7 @@ class Queens {
 					k++;
 			}
 			System.out.println(n+"-Queens has "+k+" solutions");
-		}else if (args.length == 2 && v.equals(args[0])){
+		}else if (args.length == 2 && v.equals(args[0])){ // Print solution with -v
 			int number = Integer.parseInt(args[1]);
 			n = number;
 			// First Permutation
