@@ -1,8 +1,8 @@
 // -----------------------------------------
 // Queens.java
-// Ben Sherriff
-// bsherrif
-// Find n Queens solution
+// Ben Sherriff bsherrif@ucsc.edu (CMPS 11)
+// Erica Tom edtom@ucsc.edu (CMPS 12A)
+// Solves the n Queens problem
 // -----------------------------------------
 
 import java.util.Scanner;
