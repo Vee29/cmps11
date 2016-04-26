@@ -1,7 +1,5 @@
 // ------------------------------------------------------
 // Complex.java
-// Ben Sherriff
-// bsherrif
 // pa
 // Find complex numbers and do basic operations
 // --------------------------------------------------------
