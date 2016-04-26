@@ -1,6 +1,4 @@
 /* Sphere.c
- * Ben Sherriff
- * bsherrif
  * lab7
  * Prints out volume and surface area of a sphere */
 #include<stdio.h>
