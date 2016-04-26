@@ -1,7 +1,5 @@
 // -----------------------------------------
 // Queens.java
-// Ben Sherriff bsherrif@ucsc.edu (CMPS 11)
-// Erica Tom edtom@ucsc.edu (CMPS 12A)
 // Solves the n Queens problem
 // -----------------------------------------
 
