@@ -1,6 +1,5 @@
 // --------------------------------
-// Ben Sherriff
-// bsherrif
+// March 3, 2016
 // lab 8
 // GCD program written in c
 // --------------------------------
