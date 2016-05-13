@@ -1,6 +1,4 @@
 /* Queens.java
-*  Ben Sherriff
-*  bsherrif
 *  pa5
 *  This program will find n Queens solution. 
 */
